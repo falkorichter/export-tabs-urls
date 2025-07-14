@@ -28,3 +28,9 @@ Consider this add-on done (except for bugfixes). I may or may not add new featur
 ## License
 
 [GPLv3](LICENSE)
+
+## Authors:
+* alct (https://github.com/alct/export-tabs-urls)
+* Gustavo (https://github.com/gusthoff)
+* Sam (https://github.com/)
+* Falko Richter (https://github.com/falkorichter)
