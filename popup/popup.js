@@ -120,9 +120,12 @@ function updatePopup () {
 
         header = optionsCustomHeader.replace(/\\n/g, '\n').replace(/\\r/g, '\r').replace(/{num-tabs}/g, nbTabs)
 
+        // Normalize line endings to \r\n for consistency with list content
+        header = header.replace(/\r?\n/g, '\r\n')
+
         popupTextarea.value += header
         // Only add a newline if the header doesn't already end with one and there's content to follow
-        if (list && !header.endsWith('\n') && !header.endsWith('\r\n')) {
+        if (list && !header.endsWith('\r\n')) {
           popupTextarea.value += '\r\n'
         }
       }
