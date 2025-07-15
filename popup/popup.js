@@ -132,8 +132,12 @@ function updatePopup () {
   )
 }
 
+function escapeRegExp (string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 function filterMatch (needle, haystack) {
-  var regex = new RegExp(needle, 'i')
+  var regex = new RegExp(escapeRegExp(needle), 'i')
   var match = false
 
   haystack.forEach(function (element) {
