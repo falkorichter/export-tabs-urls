@@ -132,14 +132,26 @@ function updatePopup () {
   )
 }
 
-function filterMatch (needle, haystack) {
-  var regex = new RegExp(needle, 'i')
-  var match = false
+function escapeRegExp (string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
 
+function filterMatch (needle, haystack) {
+  if (needle === '') return true
+  
+  var regex = new RegExp(escapeRegExp(needle), 'i')
+  
+  // For single special characters, only search titles to avoid matching every URL
+  // This prevents "." from matching all tabs since most URLs contain dots
+  if (needle.length === 1 && /[.*+?^${}()|[\]\\]/.test(needle)) {
+    return haystack.length > 0 && regex.test(haystack[0])
+  }
+  
+  // For other inputs, search both title and URL as before
+  var match = false
   haystack.forEach(function (element) {
     if (regex.test(element)) match = true
   })
-
   return match
 }
 
