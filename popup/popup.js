@@ -124,10 +124,6 @@ function updatePopup () {
         header = header.replace(/\r?\n/g, '\r\n')
 
         popupTextarea.value += header
-        // Only add a newline if the header doesn't already end with one and there's content to follow
-        if (list && !header.endsWith('\r\n')) {
-          popupTextarea.value += '\r\n'
-        }
       }
 
       popupTextarea.value += list
