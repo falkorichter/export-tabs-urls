@@ -1,3 +1,8 @@
+// Polyfill for browser API compatibility
+if (typeof browser === 'undefined') {
+  globalThis.browser = chrome;
+}
+
 var d = document
 var w = window
 
